@@ -12,9 +12,7 @@ export default function Footer() {
         </a>
       </div>
       <div className="footer-bottom">
-        <span>
-          © {currentYear} goengine. Todos os direitos reservados.
-        </span>
+        <span>© {currentYear} goengine. Todos os direitos reservados.</span>
         <span>
           Feito com intenção, do primeiro ao último pixel.{" "}
           <span className="blue">✦</span>

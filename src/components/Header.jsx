@@ -16,9 +16,9 @@ export default function Header({ onStartProject }) {
           aria-label="Principal"
         >
           {[
-            ["Soluções", "solucoes"],
-            ["Nosso trabalho", "trabalho"],
+            ["Serviços", "solucoes"],
             ["Como funciona", "processo"],
+            ["Dúvidas", "duvidas"],
           ].map(([t, id]) => (
             <a href={"#" + id} key={id} onClick={() => setMenu(false)}>
               {t}

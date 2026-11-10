@@ -4,7 +4,7 @@ import { questions } from "../data/content";
 export default function FAQ() {
   const [faq, setFaq] = useState(0);
   return (
-    <section className="faq-section container">
+    <section className="faq-section container" id="duvidas">
       <div>
         <span className="eyebrow">SEM PONTAS SOLTAS</span>
         <h2>
