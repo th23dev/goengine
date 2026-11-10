@@ -1,6 +1,6 @@
 # goengine
 
-Landing page em React + Vite, com layout responsivo, conceitos visuais feitos em CSS/SVG, FAQ expansível e gerador local de briefing.
+Landing page em React + Vite, com layout responsivo, conceitos visuais feitos em CSS/SVG, FAQ expansível e gerador local de briefing. Estrutura alinhada ao template oficial React (JavaScript) do create-vite 9.3.4, incluindo plugin React, StrictMode, tipos para o editor e Oxlint.
 
 ## Desenvolvimento
 
@@ -16,7 +16,38 @@ npm run build
 npm run preview
 ```
 
-O build estático é gerado em `dist/`. Textos e componentes ficam em `src/main.jsx`; estilos em `src/style.css`.
+O build estático é gerado em `dist/`. Execute `npm run lint` para verificar o código.
+
+## Organização
+
+```text
+public/                 # Arquivos públicos e favicon da goengine
+src/
+  assets/               # Assets do template Vite/React
+  components/           # Seções da página e componentes visuais
+    Header.jsx
+    Hero.jsx
+    Showcase.jsx
+    Dashboard.jsx
+    Capabilities.jsx
+    Services.jsx
+    Projects.jsx
+    Process.jsx
+    FAQ.jsx
+    Contact.jsx
+    Footer.jsx
+    Logo.jsx
+    BriefingDialog.jsx
+  data/content.js       # Conteúdo dos serviços e perguntas frequentes
+  App.jsx               # Composição da página e abertura do briefing
+  App.css               # Estilos dos componentes e responsividade
+  index.css             # Fontes, reset, tokens e estilos globais
+  main.jsx              # Entrada React com StrictMode
+vite.config.js          # Plugin React e Fast Refresh
+.oxlintrc.json          # Regras de lint do template oficial
+```
+
+O menu e o FAQ mantêm seus estados dentro dos respectivos componentes. `App` compartilha a ação de abrir o briefing por props. Os dados do formulário permanecem locais ao diálogo. A identidade visual da goengine substitui a tela demonstrativa do template.
 
 ## Contato
 
