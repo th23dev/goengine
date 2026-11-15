@@ -10,7 +10,11 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import BriefingDialog from "./components/BriefingDialog";
 import "./App.css";
+import "./premium.css";
+import About from "./components/About";
+import useMotion from "./hooks/useMotion";
 export default function App() {
+  useMotion();
   const [briefingOpen, setBriefingOpen] = useState(false);
   const openBriefing = () => setBriefingOpen(true);
   return (
@@ -22,6 +26,7 @@ export default function App() {
       <main id="conteudo">
         <Hero onStartProject={openBriefing} />
         <Capabilities />
+        <About />
         <Services onStartProject={openBriefing} />
         <Projects />
         <Process />

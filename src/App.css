@@ -22,7 +22,7 @@ header {
 .logo-symbol {
   display: grid;
   place-items: center;
-  background: var(--blue);
+  background: var(--accent);
   color: white;
   border-radius: 9px;
   width: 32px;
@@ -43,10 +43,10 @@ header {
   color: #60616a;
 }
 .nav-links a:hover {
-  color: var(--blue);
+  color: var(--accent);
 }
 .nav-cta {
-  background: #202126;
+  background: #000000;
   color: white;
   padding: 13px 20px;
   border-radius: 7px;
@@ -75,9 +75,9 @@ header {
 .status-dot {
   width: 6px;
   height: 6px;
-  background: var(--blue);
+  background: var(--accent);
   border-radius: 50%;
-  box-shadow: 0 0 0 4px #2449ed0b;
+  box-shadow: 0 0 0 4px #ff422a0b;
 }
 .hero h1 {
   font-size: clamp(54px, 6.1vw, 86px);
@@ -87,7 +87,7 @@ header {
   margin: 25px 0;
 }
 .hero h1 > span {
-  color: var(--blue);
+  color: var(--accent);
   position: relative;
   display: inline-block;
 }
@@ -98,7 +98,7 @@ header {
   width: 100%;
   height: 15px;
   fill: none;
-  stroke: #2449ed;
+  stroke: var(--accent);
   stroke-width: 2;
 }
 .hero > p {
@@ -128,10 +128,10 @@ header {
 }
 .button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px #16235718;
+  box-shadow: 0 8px 25px #00000018;
 }
 .primary {
-  background: var(--blue);
+  background: var(--accent);
   color: white;
 }
 .secondary {
@@ -189,7 +189,7 @@ header {
   background: white;
   border-radius: 9px;
   overflow: hidden;
-  box-shadow: 0 18px 60px #263d6c20;
+  box-shadow: 0 18px 60px #00000020;
   text-align: left;
   border: 1px solid #dfe3ec;
 }
@@ -251,7 +251,7 @@ header {
   margin-bottom: 24px;
 }
 .mini-logo svg {
-  color: var(--blue);
+  color: var(--accent);
 }
 .mini-logo span {
   font-size: 8px;
@@ -271,9 +271,9 @@ header {
   margin-top: 4px;
 }
 .selected {
-  background: #eef2ff;
+  background: var(--accent-soft);
   border-radius: 5px;
-  color: var(--blue);
+  color: var(--accent);
 }
 .side-bottom {
   position: absolute;
@@ -317,8 +317,8 @@ header {
 .dash-icons > span {
   display: grid;
   place-items: center;
-  background: #e9edfe;
-  color: var(--blue);
+  background: var(--accent-soft);
+  color: var(--accent);
   border-radius: 50%;
   width: 22px;
   height: 22px;
@@ -662,7 +662,7 @@ header {
   color: #626773;
 }
 .capabilities svg {
-  color: var(--blue);
+  color: var(--accent);
   width: 13px;
 }
 .section {
@@ -680,7 +680,7 @@ header {
   display: block;
   font-size: 9px;
   letter-spacing: 1.7px;
-  color: var(--blue);
+  color: var(--accent);
   font-weight: 600;
   margin-bottom: 20px;
 }
@@ -711,13 +711,13 @@ h2 {
     transform 0.2s;
 }
 .service:hover {
-  border-color: #b1bfff;
+  border-color: #ffb5a9;
   transform: translateY(-5px);
 }
 .service-top {
   display: flex;
   justify-content: space-between;
-  color: var(--blue);
+  color: var(--accent);
   margin-bottom: 36px;
 }
 .service-top > span {
@@ -779,7 +779,7 @@ h2 {
   position: relative;
 }
 .project-orbit {
-  background: #dee6fc;
+  background: #ffe1dc;
 }
 .project-category {
   position: absolute;
@@ -872,7 +872,7 @@ h2 {
 }
 .step-number {
   font-size: 11px;
-  color: var(--blue);
+  color: var(--accent);
   display: block;
   padding-bottom: 21px;
   border-bottom: 1px solid #dce0e9;
@@ -882,7 +882,7 @@ h2 {
   content: "";
   width: 5px;
   height: 5px;
-  background: var(--blue);
+  background: var(--accent);
   position: absolute;
   bottom: -3px;
   left: 0;
@@ -934,7 +934,7 @@ h2 {
 }
 .faq-item h3 svg {
   flex-shrink: 0;
-  color: var(--blue);
+  color: var(--accent);
 }
 .faq-item p {
   font-size: 12px;
@@ -943,7 +943,7 @@ h2 {
   padding: 0 25px 23px 0;
 }
 .contact {
-  background: #2449ed;
+  background: var(--accent);
   color: white;
   border-radius: 12px;
   position: relative;
@@ -952,7 +952,7 @@ h2 {
   margin-bottom: 65px;
 }
 .contact .eyebrow {
-  color: #c6d0ff;
+  color: #ffd6ce;
   font-size: 8px;
 }
 .contact h2 {
@@ -961,18 +961,18 @@ h2 {
   position: relative;
 }
 .contact h2 > span {
-  color: #a9baff;
+  color: #ffb5a9;
 }
 .contact p {
   font-size: 13px;
   line-height: 1.8;
-  color: #c6d0ff;
+  color: #ffd6ce;
   margin-top: 20px;
   position: relative;
 }
 .light {
   background: white;
-  color: #1f3ac0;
+  color: #000000;
   margin-top: 25px;
   position: relative;
 }
@@ -982,7 +982,7 @@ h2 {
   bottom: 30px;
   font-size: 7px;
   letter-spacing: 1.5px;
-  color: #b8c6ff;
+  color: #ffd6ce;
 }
 .contact-orbit {
   width: 570px;
@@ -1008,7 +1008,7 @@ h2 {
 .contact-orbit:after {
   inset: 130px;
   background: linear-gradient(125deg, #ffffff04, #ffffff12);
-  box-shadow: inset 20px -20px 40px #1734b850;
+  box-shadow: inset 20px -20px 40px #00000050;
 }
 .footer-top {
   display: flex;
@@ -1055,7 +1055,7 @@ h2 {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: #11162e80;
+  background: #00000080;
   backdrop-filter: blur(8px);
   z-index: 100;
   display: flex;
@@ -1075,8 +1075,8 @@ h2 {
   margin: auto;
   max-height: calc(100dvh - 40px);
   overflow-y: auto;
-  color: #202126;
-  box-shadow: 0 30px 100px #11182740;
+  color: #000000;
+  box-shadow: 0 30px 100px #00000040;
 }
 .close {
   position: absolute;
@@ -1126,7 +1126,7 @@ h2 {
   padding: 20px 0;
 }
 .success > svg {
-  color: var(--blue);
+  color: var(--accent);
   margin-bottom: 15px;
 }
 .success h3 {

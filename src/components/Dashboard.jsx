@@ -101,8 +101,8 @@ export default function Dashboard() {
               >
                 <defs>
                   <linearGradient id={gradientId} x1="0" x2="0" y1="0" y2="1">
-                    <stop stopColor="#3158f5" stopOpacity=".22" />
-                    <stop offset="1" stopColor="#3158f5" stopOpacity="0" />
+                    <stop stopColor="#FF422A" stopOpacity=".22" />
+                    <stop offset="1" stopColor="#FF422A" stopOpacity="0" />
                   </linearGradient>
                 </defs>
                 <path
@@ -111,7 +111,7 @@ export default function Dashboard() {
                 />
                 <path
                   d="M0 130 C40 130 50 95 100 105 S160 118 200 80 S260 100 300 65 S360 80 400 43 S465 62 500 28 S560 40 600 4"
-                  stroke="#3158f5"
+                  stroke="#FF422A"
                   strokeWidth="3"
                   fill="none"
                 />

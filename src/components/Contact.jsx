@@ -18,6 +18,7 @@ export default function Contact({ onStartProject }) {
         Conte sua ideia <ArrowUpRight size={19} />
       </button>
       <span className="contact-bottom">DA IDEIA AO DIGITAL. COM GOENGINE.</span>
+      <span className="contact-pending">E-mail / WhatsApp comercial: a preencher.</span>
     </section>
   );
 }

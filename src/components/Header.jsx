@@ -14,8 +14,10 @@ export default function Header({ onStartProject }) {
         <nav
           className={menu ? "nav-links expanded" : "nav-links"}
           aria-label="Principal"
+          id="main-navigation"
         >
           {[
+            ["Sobre", "sobre"],
             ["Serviços", "solucoes"],
             ["Como funciona", "processo"],
             ["Dúvidas", "duvidas"],
@@ -33,6 +35,7 @@ export default function Header({ onStartProject }) {
           onClick={() => setMenu(!menu)}
           aria-label={menu ? "Fechar menu" : "Abrir menu"}
           aria-expanded={menu}
+          aria-controls="main-navigation"
         >
           {menu ? <X /> : <Menu />}
         </button>
