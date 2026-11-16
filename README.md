@@ -18,6 +18,17 @@ npm run preview
 
 O build estático é gerado em `dist/`. Execute `npm run lint` para verificar o código.
 
+## GitHub Pages
+
+O projeto está configurado para publicar em GitHub Pages usando GitHub Actions.
+
+1. Envie o código para o repositório no GitHub.
+2. Ative o Pages em `Settings > Pages` e selecione `GitHub Actions` como origem.
+3. Faça push na branch `main` para disparar o deploy automaticamente.
+
+A base do Vite foi ajustada para `/goengine/`, que corresponde ao padrão de projeto em `https://<usuario>.github.io/goengine/`.
+Se o repositório tiver outro nome, ajuste `base` em `vite.config.js`.
+
 ## Organização
 
 ```text
