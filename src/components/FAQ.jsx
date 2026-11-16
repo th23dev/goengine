@@ -10,13 +10,13 @@ export default function FAQ() {
               [@media(width<=650px)]:gap-7.5 [@media(width<=650px)]:pb-16.25 [@media(width<=650px)]:pr-0
               [@media(width<=650px)]:pl-0 [@media(651px<=width<=1000px)]:w-[calc(100%-56px)]
               [@media(651px<=width<=1000px)]:gap-8.75 [@media(1500px<=width)]:w-[min(1280px,calc(100%-160px))]
-              [&_h2]:text-[38px] [&_h2]:font-[550] [&_h2]:[@media(width<=650px)]:text-[34px] [&>div>p]:text-[14px]
+              [&_h2]:text-[38px] [&_h2]:font-extrabold [&_h2]:[@media(width<=650px)]:text-[34px] [&>div>p]:text-[19px]
               [&>div>p]:text-[rgb(98,99,106)] [&>div>p]:mt-4.5"
       id="duvidas"
     >
       <div>
         <span
-          className="eyebrow block text-[10px] tracking-[1.7px] text-(--accent) font-semibold mb-5
+          className="eyebrow block text-[13px] tracking-[1.7px] text-(--accent) font-semibold mb-5
               [@media(width<=650px)]:mb-4"
         >
           SEM PONTAS SOLTAS
@@ -35,9 +35,9 @@ export default function FAQ() {
               border-r-[rgb(217,214,206)] border-l-[rgb(217,214,206)]
               first:[border-top:1px_solid_rgb(226,229,236)] [&_h3_button]:[background:transparent]
               [&_h3_button]:flex [&_h3_button]:w-full [&_h3_button]:justify-between [&_h3_button]:text-left
-              [&_h3_button]:gap-5 [&_h3_button]:items-center [&_h3_button]:p-[25px_0px] [&_h3_button]:text-[14px]
+              [&_h3_button]:gap-5 [&_h3_button]:items-center [&_h3_button]:p-[25px_0px] [&_h3_button]:text-[17px]
               [&_h3_button]:font-medium [&_h3_button]:text-[rgb(51,57,70)] [&_h3_svg]:shrink-0
-              [&_h3_svg]:text-(--accent) [&_p]:text-[14px] [&_p]:leading-[1.9] [&_p]:text-[rgb(98,99,106)]
+              [&_h3_svg]:text-(--accent) [&_p]:text-[19px] [&_p]:leading-[1.9] [&_p]:text-[rgb(98,99,106)]
               [&_p]:p-[0px_25px_23px_0px]"
             key={q}
           >

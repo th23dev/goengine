@@ -27,7 +27,7 @@ export default function App() {
         <Hero onStartProject={openBriefing} />
         <About />
         <Services onStartProject={openBriefing} />
-        <Projects />
+        <Projects onStartProject={openBriefing} />
         <Process />
         <FAQ />
         <Contact onStartProject={openBriefing} />

@@ -27,14 +27,14 @@ export default function Hero({ onStartProject }) {
               [@media(width<=650px)]:w-[calc(100%_-_40px)] [@media(width<=650px)]:pt-[42px]
               [@media(651px<=width<=1000px)]:w-[calc(100%_-_56px)] [@media(1500px<=width)]:w-[min(1280px,_100%_-_160px)]
               [&_h1]:text-[clamp(48px,_5.5vw,_80px)] [&_h1]:leading-[1.13] [&_h1]:tracking-[-0.065em]
-              [&_h1]:[font-weight:650] [&_h1]:m-[24px_0px] [&_h1]:[animation:0.7s_ease_0s_1_normal_both_running_enter]
+              [&_h1]:[font-weight:800] [&_h1]:m-[24px_0px] [&_h1]:[animation:0.7s_ease_0s_1_normal_both_running_enter]
               [&_h1]:[@media(width<=650px)]:text-[clamp(36px,_8.7vw,_56px)] [&_h1]:[@media(width<=650px)]:tracking-[-0.06em]
               [&_h1]:[@media(width<=650px)]:mt-[23px] [&_h1]:[@media(width<=650px)]:mb-[20px]
               [&_h1>span]:text-[var(--accent)] [&_h1>span]:relative [&_h1>span]:inline-block [&_h1_svg]:absolute
               [&_h1_svg]:bottom-[-9px] [&_h1_svg]:left-[0px] [&_h1_svg]:w-full [&_h1_svg]:h-[15px] [&_h1_svg]:[fill:none]
-              [&_h1_svg]:[stroke:var(--accent)] [&_h1_svg]:[stroke-width:2] [&>p]:text-[rgb(115,_118,_127)] [&>p]:text-[16px]
+              [&_h1_svg]:[stroke:var(--accent)] [&_h1_svg]:[stroke-width:2] [&>p]:text-[rgb(115,_118,_127)] [&>p]:text-[20px]
               [&>p]:leading-[1.8] [&>p]:mt-[30px] [&>p]:[animation:0.7s_ease_0.1s_1_normal_both_running_enter]
-              [&>p]:[@media(width<=650px)]:text-[13px] [&>p]:[@media(width<=650px)]:leading-[1.9]
+              [&>p]:[@media(width<=650px)]:text-[18px] [&>p]:[@media(width<=650px)]:leading-[1.9]
               [&>p]:[@media(width<=650px)]:mt-[28px] [&>p]:[@media(width<=650px)]:max-w-[340px]
               [&>p]:[@media(width<=650px)]:ml-[auto] [&>p]:[@media(width<=650px)]:mr-[auto]
               [&_h1_.hero-period]:[font-family:Arial,_sans-serif] [&_h1_.hero-period]:text-[0.72em]
@@ -42,13 +42,13 @@ export default function Hero({ onStartProject }) {
         id="inicio"
       >
         <div
-          className="platform-intro m-[auto] max-w-[850px] [&>p]:text-[17px] [&>p]:leading-[1.8] [&>p]:text-[rgb(98,_99,_106)]
-              [&>p]:[@media(width<=650px)]:text-[14px] [&>p]:[@media(width<=650px)]:max-w-[340px]
+          className="platform-intro m-[auto] max-w-[850px] [&>p]:text-[21px] [&>p]:leading-[1.8] [&>p]:text-[rgb(98,_99,_106)]
+              [&>p]:[@media(width<=650px)]:text-[19px] [&>p]:[@media(width<=650px)]:max-w-[340px]
               [&>p]:[@media(width<=650px)]:m-[auto]"
         >
           <span
-            className="platform-kicker text-[var(--accent)] text-[11px] [font-weight:650] tracking-[0.6px]
-              [@media(width<=650px)]:text-[8px] [@media(width<=650px)]:tracking-[0.4px]"
+            className="platform-kicker text-[var(--accent)] text-[14px] [font-weight:650] tracking-[0.6px]
+              [@media(width<=650px)]:text-[12px] [@media(width<=650px)]:tracking-[0.4px]"
           >
             GOENGINE · DESENVOLVIMENTO SOB MEDIDA
           </span>
@@ -66,10 +66,10 @@ export default function Hero({ onStartProject }) {
             className="platform-actions flex justify-center gap-[16px] mt-[29px] [@media(width<=650px)]:gap-[10px]
               [@media(width<=650px)]:mt-[24px] [@media(width<=650px)]:flex-wrap [&_.button]:p-[17px_25px]
               [&_.button]:gap-[20px] [&_.button]:[@media(width<=650px)]:p-[15px_17px]
-              [&_.button]:[@media(width<=650px)]:gap-[10px] [&_.button]:[@media(width<=650px)]:text-[11px]"
+              [&_.button]:[@media(width<=650px)]:gap-[10px] [&_.button]:[@media(width<=650px)]:text-[14px]"
           >
             <button
-              className="button primary inline-flex items-center justify-center gap-[25px] rounded-[40px] p-[18px_24px] text-[13px]
+              className="button primary inline-flex items-center justify-center gap-[25px] rounded-[40px] p-[18px_24px] text-[16px]
               font-semibold [transition:transform_0.25s,_box-shadow_0.25s,_translate_0.2s] [background:var(--accent)]
               text-[white] [&:hover]:[transform:translateY(-3px)] [&:hover]:[box-shadow:rgba(0,_0,_0,_0.094)_0px_8px_25px]
               [&_svg]:[transition:transform_0.25s] [&:hover_svg]:[transform:translate(3px,_-3px)]"
@@ -78,7 +78,7 @@ export default function Hero({ onStartProject }) {
               Solicitar orçamento <ArrowUpRight size={17} />
             </button>
             <a
-              className="button secondary inline-flex items-center justify-center gap-[25px] rounded-[40px] p-[18px_24px] text-[13px]
+              className="button secondary inline-flex items-center justify-center gap-[25px] rounded-[40px] p-[18px_24px] text-[16px]
               font-semibold [transition:transform_0.25s,_box-shadow_0.25s,_translate_0.2s]
               [border:1px_solid_rgb(222,_223,_231)] [background:white] [&:hover]:[transform:translateY(-3px)]
               [&:hover]:[box-shadow:rgba(0,_0,_0,_0.094)_0px_8px_25px] [&_svg]:[transition:transform_0.25s]

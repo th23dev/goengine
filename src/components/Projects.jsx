@@ -1,6 +1,54 @@
-import { Code2, Globe2 } from "lucide-react";
-import Dashboard from "./Dashboard";
-export default function Projects() {
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, ArrowLeft, ArrowRight, Plus } from "lucide-react";
+import "./Projects.css";
+const projects = [
+  {
+    name: "GO REGISTER",
+    category: "Sistema de gestão comercial",
+    description: "Vendas, caixa e estoque conectados em um sistema para organizar a rotina do comércio.",
+    url: "https://goregister.com.br/",
+    domain: "goregister.com.br",
+    image: "projects/goregister.jpg",
+    alt: "Página inicial do GO REGISTER com apresentação do sistema de vendas, caixa e estoque.",
+    linkLabel: "Visitar GO REGISTER (abre em nova aba)",
+  },
+  {
+    name: "Vem Viver Curuçá",
+    category: "Portal de turismo",
+    description: "Atrativos, experiências e informações para planejar uma visita a Curuçá, no litoral amazônico.",
+    url: "https://vemvivercuruca.curuca.pa.gov.br/",
+    domain: "vemvivercuruca.curuca.pa.gov.br",
+    image: "projects/curuca.jpg",
+    alt: "Portal Vem Viver Curuçá com paisagem natural e acesso ao guia turístico do município.",
+    linkLabel: "Visitar Vem Viver Curuçá (abre em nova aba)",
+  },
+];
+const invitations = [
+  { category: "Sites e landing pages", text: "Uma presença digital com a identidade da sua marca." },
+  { category: "Sistemas sob medida", text: "Uma solução pensada para os desafios do seu negócio." },
+  { category: "Aplicativos", text: "Sua ideia conectada às pessoas, em qualquer tela." },
+];
+export default function Projects({ onStartProject }) {
+  const track = useRef(null);
+  const [position, setPosition] = useState({ start: true, end: false });
+  useEffect(() => {
+    const element = track.current;
+    const update = () => setPosition({ start: element.scrollLeft < 2, end: element.scrollLeft + element.clientWidth >= element.scrollWidth - 2 });
+    const observer = new ResizeObserver(update);
+    observer.observe(element);
+    element.addEventListener("scroll", update, { passive: true });
+    update();
+    return () => { observer.disconnect(); element.removeEventListener("scroll", update); };
+  }, []);
+  const move = (direction) => {
+    const element = track.current;
+    const cards = [...element.children];
+    const left = element.getBoundingClientRect().left;
+    const inset = parseFloat(getComputedStyle(element).paddingLeft);
+    const offsets = cards.map(card => card.getBoundingClientRect().left - left + element.scrollLeft - inset);
+    const target = direction > 0 ? offsets.find(offset => offset > element.scrollLeft + 2) : offsets.findLast(offset => offset < element.scrollLeft - 2);
+    element.scrollTo({ left: target ?? 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  };
   return (
     <section
       className="work-section [background:rgb(32,_33,_35)] p-[100px_0px] text-[rgb(245,_240,_231)]
@@ -14,17 +62,17 @@ export default function Projects() {
       >
         <div
           className="section-heading flex justify-between items-end gap-[25px] mb-[43px] [@media(width<=650px)]:block
-              [@media(width<=650px)]:mb-[30px] [&>p]:text-[14px] [&>p]:leading-[1.8] [&>p]:text-[rgb(103,_103,_107)]
+              [@media(width<=650px)]:mb-[30px] [&>p]:text-[19px] [&>p]:leading-[1.8] [&>p]:text-[rgb(103,_103,_107)]
               [&>p]:mb-[3px] [&>p]:[@media(width<=650px)]:mt-[20px] [&_h2]:text-[clamp(34px,_3.6vw,_53px)]
-              [&_h2]:leading-[1.15] [&_h2]:tracking-[-0.055em] [&_h2]:[font-weight:550]
+              [&_h2]:leading-[1.15] [&_h2]:tracking-[-0.055em] [&_h2]:[font-weight:800]
               [&_h2]:[@media(width<=650px)]:text-[36px]"
         >
           <div>
             <span
-              className="eyebrow block text-[10px] tracking-[1.7px] text-[var(--accent)] font-semibold mb-[20px]
+              className="eyebrow block text-[13px] tracking-[1.7px] text-[var(--accent)] font-semibold mb-[20px]
               [@media(width<=650px)]:mb-[16px]"
             >
-              02 / POSSIBILIDADES EM TELA
+              02 / PROJETOS DA GOENGINE
             </span>
             <h2>
               Design que chama atenção.
@@ -33,103 +81,35 @@ export default function Projects() {
             </h2>
           </div>
           <p>
-            Uma amostra do que podemos construir.
+            Projetos que saíram da ideia para a realidade.
             <br />
-            Conceitos autorais, novas possibilidades.
+            Conheça os sites desenvolvidos pela Goengine.
           </p>
         </div>
-        <div
-          className="projects grid grid-cols-[1.1fr_1fr] gap-[35px] [align-items:start] [@media(width<=650px)]:grid-cols-[1fr]
-              [&>article:nth-child(2)]:pt-[85px] [&>article:nth-child(2)]:[@media(width<=650px)]:pt-[0px]"
-        >
-          <article>
-            <div
-              className="project-art project-orbit h-[340px] rounded-[4px] overflow-hidden relative [background:rgb(243,_185,_165)]
-              [@media(width<=650px)]:h-[290px] [@media(651px<=width<=1000px)]:h-[300px]
-              [&:hover_.project-dash]:[transform:rotate(-2deg)_scale(0.77)]
-              [&:hover_.project-dash]:[@media(width<=650px)]:[transform:rotate(-3deg)_scale(0.62)]
-              [&:hover_.architectural]:[transform:rotate(-5deg)_translateY(-10px)]
-              [&:hover_.architectural]:[@media(prefers-reduced-motion:_reduce)]:[transform:none]"
-            >
-              <span className="project-category absolute left-[23px] top-[21px] text-[9px] tracking-[1.5px] z-[3] text-[rgb(60,_51,_46)]">
-                SOFTWARE SOB ENCOMENDA
-              </span>
-              <div
-                className="project-dash absolute top-[65px] left-[55px] [transform:rotate(-5deg)_scale(0.74)] [transform-origin:left_top]
-              [transition:transform_0.65s_cubic-bezier(0.2,_0.8,_0.2,_1)] [@media(width<=650px)]:left-[20px]
-              [@media(width<=650px)]:[transform:rotate(-5deg)_scale(0.6)] [@media(651px<=width<=1000px)]:left-[25px]
-              [@media(651px<=width<=1000px)]:[transform:rotate(-5deg)_scale(0.64)] [&_.dashboard]:text-[var(--ink)]"
-              >
-                <Dashboard />
-              </div>
-            </div>
-            <div
-              className="project-description flex justify-between items-center mt-[21px] [&_h3]:flex [&_h3]:items-center
-              [&_h3]:gap-[14px] [&_h3]:text-[25px] [&_h3]:tracking-[-0.8px] [&_h3]:[@media(651px<=width<=1000px)]:block
-              [&_h3>span]:[font-family:'DM_Sans'] [&_h3>span]:font-normal [&_h3>span]:text-[11px]
-              [&_h3>span]:text-[rgb(188,_186,_183)] [&_h3>span]:tracking-[0px] [&_h3>span]:[@media(width<=650px)]:block
-              [&_h3>span]:[@media(width<=650px)]:mt-[0px] [&_h3>span]:[@media(651px<=width<=1000px)]:block
-              [&_h3>span]:[@media(651px<=width<=1000px)]:mt-[5px] [&_p]:text-[11px] [&_p]:text-[rgb(188,_186,_183)]
-              [&_p]:mt-[7px] [&>svg]:text-[rgb(255,_145,_125)]"
-            >
-              <div>
-                <h3>
-                  orbit<span>Uma operação mais simples.</span>
-                </h3>
-                <p>Conceito demonstrativo · Sistema de gestão</p>
-              </div>
-              <Code2 size={22} />
-            </div>
-          </article>
-          <article>
-            <div
-              className="project-art project-forma h-[340px] rounded-[4px] overflow-hidden relative [background:rgb(217,_209,_195)]
-              [@media(width<=650px)]:h-[290px] [@media(651px<=width<=1000px)]:h-[300px]
-              [&:hover_.project-dash]:[transform:rotate(-2deg)_scale(0.77)]
-              [&:hover_.project-dash]:[@media(width<=650px)]:[transform:rotate(-3deg)_scale(0.62)]
-              [&:hover_.architectural]:[transform:rotate(-5deg)_translateY(-10px)]
-              [&:hover_.architectural]:[@media(prefers-reduced-motion:_reduce)]:[transform:none]"
-            >
-              <span className="project-category absolute left-[23px] top-[21px] text-[9px] tracking-[1.5px] z-[3] text-[rgb(60,_51,_46)]">
-                SITE INSTITUCIONAL
-              </span>
-              <div
-                className="forma-word absolute left-[30px] top-[70px] [font:64px_Georgia] z-[2] tracking-[-3px] text-[rgb(61,_57,_50)]
-              [&_span]:block [&_span]:[font:9px_'DM_Sans'] [&_span]:tracking-[0px] [&_span]:mt-[10px]"
-              >
-                forma<span>Espaço para novas perspectivas.</span>
-              </div>
-              <div
-                className="architectural absolute right-[-20px] bottom-[-60px] flex gap-[15px] [transform:rotate(-12deg)]
-              [transition:transform_0.65s_cubic-bezier(0.2,_0.8,_0.2,_1)] [&_div]:w-[70px] [&_div]:h-[275px]
-              [&_div]:[background:linear-gradient(90deg,_rgb(199,_190,_172),_rgb(235,_229,_219)_50%,_rgb(211,_203,_189))]
-              [&_div]:rounded-[80px_80px_0px_0px] [&_div]:[box-shadow:rgba(138,_125,_98,_0.25)_15px_8px_25px]
-              [&_div:nth-child(2)]:h-[330px] [&_div:nth-child(2)]:mt-[-20px] [&_div:nth-child(3)]:h-[360px]
-              [&_div:nth-child(3)]:mt-[-40px]"
-              >
-                <div />
-                <div />
-                <div />
-              </div>
-            </div>
-            <div
-              className="project-description flex justify-between items-center mt-[21px] [&_h3]:flex [&_h3]:items-center
-              [&_h3]:gap-[14px] [&_h3]:text-[25px] [&_h3]:tracking-[-0.8px] [&_h3]:[@media(651px<=width<=1000px)]:block
-              [&_h3>span]:[font-family:'DM_Sans'] [&_h3>span]:font-normal [&_h3>span]:text-[11px]
-              [&_h3>span]:text-[rgb(188,_186,_183)] [&_h3>span]:tracking-[0px] [&_h3>span]:[@media(width<=650px)]:block
-              [&_h3>span]:[@media(width<=650px)]:mt-[0px] [&_h3>span]:[@media(651px<=width<=1000px)]:block
-              [&_h3>span]:[@media(651px<=width<=1000px)]:mt-[5px] [&_p]:text-[11px] [&_p]:text-[rgb(188,_186,_183)]
-              [&_p]:mt-[7px] [&>svg]:text-[rgb(255,_145,_125)]"
-            >
-              <div>
-                <h3>
-                  forma<span>Uma presença com identidade.</span>
-                </h3>
-                <p>Conceito demonstrativo · Arquitetura e interiores</p>
-              </div>
-              <Globe2 size={22} />
-            </div>
-          </article>
+        <div className="portfolio-controls">
+          <span>Projetos reais. O próximo pode ser o seu.</span>
+          <div><button type="button" aria-label="Projetos anteriores" aria-controls="projects-carousel" disabled={position.start} onClick={() => move(-1)}><ArrowLeft size={21} /></button><button type="button" aria-label="Próximos projetos" aria-controls="projects-carousel" disabled={position.end} onClick={() => move(1)}><ArrowRight size={21} /></button></div>
+        </div>
+        <div className="portfolio-projects" id="projects-carousel" ref={track} role="region" aria-roledescription="carrossel" aria-label="Projetos da Goengine e possibilidades para o seu negócio" tabIndex={0}>
+          {projects.map(project => (
+            <article key={project.name}>
+              <a className="portfolio-link" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={project.linkLabel}>
+                <div className="portfolio-preview">
+                  <div className="portfolio-browser" aria-hidden="true"><span><i /><i /><i /></span><span>{project.domain}</span><ArrowUpRight size={16} /></div>
+                  <img src={import.meta.env.BASE_URL + project.image} alt={project.alt} width="1440" height="1000" loading="lazy" />
+                </div>
+                <div className="portfolio-details"><span className="portfolio-category">{project.category}</span><div className="portfolio-title"><h3>{project.name}</h3><ArrowUpRight size={25} /></div><p>{project.description}</p><span className="portfolio-visit">Visitar site <ArrowUpRight size={16} /></span></div>
+              </a>
+            </article>
+          ))}
+          {invitations.map((invitation, index) => (
+            <article className={`portfolio-invitation invitation-${index}`} key={invitation.category}>
+              <button className="portfolio-link" type="button" onClick={onStartProject} aria-label={`Começar meu projeto: ${invitation.category}`}>
+                <div className="invitation-art"><span className="invitation-kicker">ESPAÇO PARA A SUA IDEIA</span><span className="invitation-plus" aria-hidden="true"><Plus size={44} strokeWidth={1} /></span><strong>Pode ser o<br />seu projeto<span>.</span></strong><span className="invitation-number" aria-hidden="true">0{index + 3} / GOENGINE</span></div>
+                <div className="portfolio-details"><span className="portfolio-category">{invitation.category}</span><div className="portfolio-title"><h3>Vamos criar juntos?</h3><ArrowUpRight size={25} /></div><p>{invitation.text}</p><span className="portfolio-visit">Começar meu projeto <ArrowUpRight size={16} /></span></div>
+              </button>
+            </article>
+          ))}
         </div>
       </div>
     </section>

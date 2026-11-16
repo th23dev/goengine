@@ -65,10 +65,10 @@
   h1,
   h2,
   h3 {
-    @apply font-display;
+    @apply font-display font-extrabold;
   }
   h2 {
-    @apply text-[40px] leading-[1.2] tracking-[-1.8px] font-[650];
+    @apply text-[40px] leading-[1.2] tracking-[-1.8px] font-extrabold;
     @apply [@media(width<=650px)]:text-[30px] [@media(width<=650px)]:tracking-[-1.3px];
   }
   ::selection {

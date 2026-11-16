@@ -64,7 +64,7 @@ O menu e o FAQ mantêm seus estados dentro dos respectivos componentes. `App` co
 
 Nenhum endereço ou número foi fornecido. O formulário valida os campos e baixa um arquivo de briefing localmente; não envia dados a um servidor. Para receber leads, substituir esse fluxo por uma integração com o contato real da empresa e definir a política de privacidade correspondente.
 
-Orbit, Forma e Nü são conceitos demonstrativos, não clientes ou resultados reais. Fontes são carregadas do Google Fonts, com fallback local.
+A seção de projetos apresenta GO REGISTER (https://goregister.com.br/) e Vem Viver Curuçá (https://vemvivercuruca.curuca.pa.gov.br/), projetos da empresa, com capturas das páginas públicas em `public/projects/`. As interfaces da seção de serviços continuam demonstrativas. Fontes são carregadas do Google Fonts, com fallback local.
 
 ## Reformulação visual
 

@@ -14,22 +14,22 @@ export default function Footer({ onStartProject }) {
           className="footer-directory grid grid-cols-[1.5fr_repeat(4,_1fr)] gap-[36px]
               [@media(width<=650px)]:grid-cols-[repeat(2,_minmax(0px,_1fr))] [@media(width<=650px)]:gap-[28px_18px]
               [@media(651px<=width<=1000px)]:grid-cols-[repeat(4,_1fr)] [@media(651px<=width<=1000px)]:gap-[30px_20px]
-              [&_h2]:block [&_h2]:[font:500_10px_/_1.5_'DM_Sans',_sans-serif] [&_h2]:tracking-[0.7px] [&_h2]:uppercase
+              [&_h2]:block [&_h2]:[font:500_13px_/_1.5_'DM_Sans',_sans-serif] [&_h2]:tracking-[0.7px] [&_h2]:uppercase
               [&_h2]:text-[rgb(159,_154,_149)] [&_h2]:m-[0px_0px_19px] [&_h2]:[@media(width<=650px)]:mb-[12px] [&_nav]:flex
               [&_nav]:flex-col [&_nav]:items-start [&_a]:inline-flex [&_a]:items-center [&_a]:gap-[9px] [&_a]:p-[5px_0px]
-              [&_a]:text-[12px] [&_a]:leading-[1.7] [&_a]:text-[rgb(238,_236,_232)] [&_a]:[background:transparent]
+              [&_a]:text-[15px] [&_a]:leading-[1.7] [&_a]:text-[rgb(238,_236,_232)] [&_a]:[background:transparent]
               [&_a]:text-left [&_a]:[transition:color_0.2s] [&_button]:inline-flex [&_button]:items-center
-              [&_button]:gap-[9px] [&_button]:p-[5px_0px] [&_button]:text-[12px] [&_button]:leading-[1.7]
+              [&_button]:gap-[9px] [&_button]:p-[5px_0px] [&_button]:text-[15px] [&_button]:leading-[1.7]
               [&_button]:text-[rgb(238,_236,_232)] [&_button]:[background:transparent] [&_button]:text-left
               [&_button]:[transition:color_0.2s] [&_a:hover]:text-[rgb(255,_148,_127)]
               [&_button:hover]:text-[rgb(255,_148,_127)]"
         >
           <div
-            className="footer-signature [&>span]:block [&>span]:[font:500_10px_/_1.5_'DM_Sans',_sans-serif] [&>span]:tracking-[0.7px]
+            className="footer-signature [&>span]:block [&>span]:[font:500_13px_/_1.5_'DM_Sans',_sans-serif] [&>span]:tracking-[0.7px]
               [&>span]:uppercase [&>span]:text-[rgb(159,_154,_149)] [&>span]:m-[0px_0px_19px] [&>span::before]:[content:'']
               [&>span::before]:inline-block [&>span::before]:w-[5px] [&>span::before]:h-[5px] [&>span::before]:mr-[8px]
               [&>span::before]:rounded-[50%] [&>span::before]:[background:var(--accent)]
-              [&>span::before]:[vertical-align:middle] [&_p]:text-[14px] [&_p]:leading-[1.8] [&_p]:text-[rgb(194,_189,_183)]
+              [&>span::before]:[vertical-align:middle] [&_p]:text-[19px] [&_p]:leading-[1.8] [&_p]:text-[rgb(194,_189,_183)]
               [@media(width<=1000px)]:col-[1_/_-1] [@media(width<=1000px)]:mb-[10px]"
           >
             <span>DA IDEIA AO DIGITAL.</span>
@@ -80,8 +80,8 @@ export default function Footer({ onStartProject }) {
           goengine
         </div>
         <div
-          className="footer-copyright text-center text-[10px] leading-[1.7] text-[rgb(159,_154,_149)]
-              [@media(width<=650px)]:text-[9px]"
+          className="footer-copyright text-center text-[13px] leading-[1.7] text-[rgb(159,_154,_149)]
+              [@media(width<=650px)]:text-[12px]"
         >
           © {currentYear} Goengine. Todos os direitos reservados.
         </div>

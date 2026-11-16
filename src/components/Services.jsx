@@ -1,4 +1,5 @@
-﻿import { useEffect, useRef } from "react";
+﻿import "./Services.css";
+import { useEffect, useRef } from "react";
 import {
   ArrowUpRight,
   ArrowDown,
@@ -303,238 +304,90 @@ function Preview({ type }) {
   );
 }
 
+function Scene({ offering, index, pinned = false }) {
+  const Icon = offering.icon;
+  return (
+    <div className={`service-scene scene-${offering.id}`} data-active={pinned ? String(index === 0) : undefined} aria-hidden="true">
+      <div className="scene-heading"><span><Icon size={16} />{offering.label}</span><span>0{index + 1} / 03</span></div>
+      <div className="scene-orbit" />
+      <div className="scene-preview"><Preview type={offering.id} /></div>
+      <div className="scene-footer"><span><i /> Interface demonstrativa</span><span>GOENGINE</span></div>
+    </div>
+  );
+}
+
 export default function Services({ onStartProject }) {
   const root = useRef(null);
   useEffect(() => {
-    const panels = [...root.current.querySelectorAll(".service-story")];
-    const scenes = [
-      ...root.current.querySelectorAll(".service-pinned .service-scene"),
-    ];
-    const items = [...root.current.querySelectorAll(".service-story-copy > *")];
-    const preference = matchMedia("(prefers-reduced-motion: reduce)");
+    const panels = [...root.current.querySelectorAll('.service-story')];
+    const scenes = [...root.current.querySelectorAll('.service-pinned .service-scene')];
+    const links = [...root.current.querySelectorAll('.service-chapters a')];
+    const preference = matchMedia('(prefers-reduced-motion: reduce)');
     let frame = 0;
     const update = () => {
       frame = 0;
       let active = 0;
       panels.forEach((panel, index) => {
         const rect = panel.getBoundingClientRect();
-        if (rect.top <= innerHeight * 0.55) active = index;
-        const progress = Math.max(
-          0,
-          Math.min(1, (innerHeight - rect.top) / (innerHeight * 0.75)),
-        );
-        panel.style.setProperty(
-          "--scene-progress",
-          preference.matches ? 1 : progress,
-        );
+        if (rect.top <= innerHeight * 0.5) active = index;
+        const progress = Math.max(0, Math.min(1, (innerHeight - rect.top) / (innerHeight * 0.7)));
+        panel.style.setProperty('--scene-progress', preference.matches ? 1 : progress);
       });
       scenes.forEach((scene, index) => {
         scene.dataset.active = String(index === active);
-        scene.style.setProperty("--scene-progress", 1);
+        scene.style.setProperty('--scene-progress', 1);
       });
-      items.forEach((item) => {
-        const progress = Math.max(
-          0,
-          Math.min(
-            1,
-            (innerHeight * 0.9 - item.getBoundingClientRect().top) /
-              (innerHeight * 0.23),
-          ),
-        );
-        item.style.setProperty(
-          "--item-progress",
-          preference.matches ? 1 : progress,
-        );
+      links.forEach((link, index) => {
+        if (index === active) link.setAttribute('aria-current', 'step');
+        else link.removeAttribute('aria-current');
       });
     };
-    const schedule = () => {
-      if (!frame) frame = requestAnimationFrame(update);
-    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
     update();
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule);
-    preference.addEventListener("change", schedule);
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    preference.addEventListener('change', schedule);
     return () => {
       cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
-      preference.removeEventListener("change", schedule);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      preference.removeEventListener('change', schedule);
     };
   }, []);
   return (
-    <section
-      className="section layout-container service-experience w-[min(1200px,_100%_-_96px)] m-[auto] pt-[110px] pb-[110px]
-              [@media(width<=650px)]:w-[calc(100%_-_40px)] [@media(width<=650px)]:pt-[70px] [@media(width<=650px)]:pb-[70px]
-              [@media(651px<=width<=1000px)]:w-[calc(100%_-_56px)] [@media(1500px<=width)]:w-[min(1280px,_100%_-_160px)]
-              [&:is(#solucoes)]:pt-[30px]"
-      id="solucoes"
-      ref={root}
-    >
-      <div
-        className="section-heading flex justify-between items-end gap-[25px] mb-[43px] [@media(width<=650px)]:block
-              [@media(width<=650px)]:mb-[30px] [&>p]:text-[14px] [&>p]:leading-[1.8] [&>p]:text-[rgb(103,_103,_107)]
-              [&>p]:mb-[3px] [&>p]:[@media(width<=650px)]:mt-[20px] [&_h2]:text-[clamp(34px,_3.6vw,_53px)]
-              [&_h2]:leading-[1.15] [&_h2]:tracking-[-0.055em] [&_h2]:[font-weight:550]
-              [&_h2]:[@media(width<=650px)]:text-[36px]"
-      >
-        <div>
-          <span
-            className="eyebrow block text-[10px] tracking-[1.7px] text-[var(--accent)] font-semibold mb-[20px]
-              [@media(width<=650px)]:mb-[16px]"
-          >
-            01 / SOLUÇÕES DIGITAIS SOB MEDIDA
-          </span>
-          <h2>Nossos serviços.</h2>
-        </div>
-        <p>
-          Criamos landing pages, aplicativos mobile
-          <br />e aplicativos para computador.
-          <br />
-          Explore cada serviço abaixo.
-        </p>
+    <section className="service-experience" id="solucoes" ref={root} aria-labelledby="services-title">
+      <div className="service-heading">
+        <div><span className="service-eyebrow">01 / SOLUÇÕES DIGITAIS SOB MEDIDA</span><h2 id="services-title">Sua ideia.<br /><em>Novas possibilidades.</em></h2></div>
+        <p>Da primeira impressão à rotina do seu negócio. Design e tecnologia que trabalham juntos, em qualquer tela.</p>
       </div>
-      <nav
-        className="service-chapters flex [border-block:1px_solid_rgb(220,_216,_208)] [@media(width<=650px)]:flex-col
-              [&_a]:[flex:1_1_0%] [&_a]:flex [&_a]:items-center [&_a]:gap-[12px] [&_a]:p-[20px_15px] [&_a]:text-[12px]
-              [&_a]:[@media(width<=650px)]:p-[15px_8px] [&_a+a]:[border-left:1px_solid_rgb(220,_216,_208)]
-              [&_a+a]:[@media(width<=650px)]:[border-left:0px]
-              [&_a+a]:[@media(width<=650px)]:[border-top:1px_solid_rgb(220,_216,_208)] [&_a>span]:text-[var(--accent)]
-              [&_a>span]:text-[10px] [&_svg]:ml-[auto] [&_a:hover]:[background:var(--accent-soft)]"
-        aria-label="Tipos de serviço"
-      >
-        {offerings.map(({ id, label }, i) => (
-          <a key={id} href={`#servico-${id}`}>
-            <span>0{i + 1}</span>
-            {label}
-            <ArrowDown size={13} />
+      <nav className="service-chapters" aria-label="Tipos de serviço">
+        {offerings.map(({ id, label, icon: Icon }, i) => (
+          <a key={id} href={`#servico-${id}`} aria-current={i === 0 ? 'step' : undefined}>
+            <span className="chapter-icon"><Icon size={21} /></span>
+            <span className="chapter-name"><small>0{i + 1}</small>{label}</span><ArrowDown size={17} />
           </a>
         ))}
       </nav>
-      <div
-        className="service-track grid grid-cols-[0.85fr_1.15fr] gap-[7%] relative [align-items:start] [@media(width<=650px)]:block
-              [@media(651px<=width<=900px)]:gap-[4%] [&_.service-story]:flex [&_.service-story]:items-center
-              [&_.service-story]:min-h-[85vh] [&_.service-story]:p-[90px_0px] [&_.service-story]:[scroll-margin-top:110px]
-              [&_.service-story]:[@media(width<=650px)]:grid [&_.service-story]:[@media(width<=650px)]:min-h-0
-              [&_.service-story]:[@media(width<=650px)]:pt-[45px] [&_.service-story]:[@media(width<=650px)]:pb-[45px]"
-      >
-        <div className="service-narrative min-w-0 [&_.service-scene]:hidden [&_.service-scene]:[@media(width<=650px)]:grid">
-          {offerings.map(({ id, icon: Icon, label, title, text, tags }, i) => (
-            <article
-              className={
-                `service-story service-story-${id}` +
-                " [--scene-progress:1] grid grid-cols-[0.85fr_1.15fr] items-center gap-[7%] min-h-[650px] p-[65px_0px] [border-bottom:1px_solid_rgb(220,_216,_208)] [scroll-margin-top:100px] [@media(width<=650px)]:grid-cols-[1fr] [@media(width<=650px)]:gap-[30px] [@media(width<=650px)]:min-h-0 [@media(width<=650px)]:pt-[45px] [@media(width<=650px)]:pb-[45px] [@media(651px<=width<=900px)]:gap-[4%] [@media(651px<=width<=900px)]:min-h-[560px] [&.service-story-label]:flex [&.service-story-label]:items-center [&.service-story-label]:gap-[12px] [&.service-story-label]:text-[11px] [&.service-story-label]:text-[var(--accent)] [&.service-story-copy_h3]:text-[clamp(32px,_3.2vw,_46px)] [&.service-story-copy_h3]:leading-[1.15] [&.service-story-copy_h3]:tracking-[-1.8px] [&.service-story-copy_h3]:m-[25px_0px] [&.service-story-copy_h3]:[@media(width<=650px)]:text-[36px] [&.service-story-copy_h3]:[@media(651px<=width<=900px)]:text-[33px] [&.service-story-copy_h3>span]:block [&.service-story-copy_h3_em]:[font:italic_1.1em_Georgia,_serif] [&.service-story-copy_h3_em]:text-[var(--accent)] [&.service-story-copy>p]:text-[14px] [&.service-story-copy>p]:leading-[1.9] [&.service-story-copy>p]:text-[rgb(100,_100,_107)] [&.service-story-copy>p]:max-w-[370px] [&.service-story-copy>p]:[@media(width<=650px)]:max-w-none [&.service-story-copy_ul]:flex [&.service-story-copy_ul]:flex-wrap [&.service-story-copy_ul]:gap-[8px] [&.service-story-copy_ul]:p-[0px] [&.service-story-copy_ul]:m-[24px_0px] [&.service-story-copy_ul]:list-none [&.service-story-copy_li]:[border:1px_solid_rgb(220,_216,_208)] [&.service-story-copy_li]:rounded-[20px] [&.service-story-copy_li]:p-[7px_11px] [&.service-story-copy_li]:text-[10px] [&.service-story-copy_li]:text-[rgb(104,_100,_94)] [&.service-story-copy_.text-link]:w-full [&.service-story-copy_.text-link]:max-w-[370px] [&.service-story-mobile_.service-scene]:[background:rgb(234,_236,_231)] [&.service-story-desktop_.service-scene]:[background:rgb(232,_235,_239)] [&.service-story-copy]:w-full [&.service-story-copy>*]:[--item-progress:1] [&.service-story-copy>*]:opacity-[var(--item-progress)] [&.service-story-copy>*]:[transform:translateY(calc((1_-_var(--item-progress))_*_38px))] [&.service-story-copy>:focus-within]:opacity-[1] [&.service-story-copy>:focus-within]:[transform:none] [&.service-story-copy>:focus-visible]:opacity-[1] [&.service-story-copy>:focus-visible]:[transform:none] [&.service-story-copy>*]:[@media(prefers-reduced-motion:_reduce)]:opacity-[1] [&.service-story-copy>*]:[@media(prefers-reduced-motion:_reduce)]:[transform:none]"
-              }
-              id={`servico-${id}`}
-              key={id}
-            >
-              <div
-                className="service-story-copy [&_h3]:text-[clamp(32px,_3.2vw,_46px)] [&_h3]:leading-[1.15] [&_h3]:tracking-[-1.8px]
-              [&_h3]:m-[25px_0px] [&_h3]:[@media(width<=650px)]:text-[36px] [&_h3]:[@media(651px<=width<=900px)]:text-[33px]
-              [&_h3>span]:block [&_h3_em]:[font:italic_1.1em_Georgia,_serif] [&_h3_em]:text-[var(--accent)] [&>p]:text-[14px]
-              [&>p]:leading-[1.9] [&>p]:text-[rgb(100,_100,_107)] [&>p]:max-w-[370px] [&>p]:[@media(width<=650px)]:max-w-none
-              [&_ul]:flex [&_ul]:flex-wrap [&_ul]:gap-[8px] [&_ul]:p-[0px] [&_ul]:m-[24px_0px] [&_ul]:list-none
-              [&_li]:[border:1px_solid_rgb(220,_216,_208)] [&_li]:rounded-[20px] [&_li]:p-[7px_11px] [&_li]:text-[10px]
-              [&_li]:text-[rgb(104,_100,_94)] [&_.text-link]:w-full [&_.text-link]:max-w-[370px] w-full
-              [&>*]:[--item-progress:1] [&>*]:opacity-[var(--item-progress)]
-              [&>*]:[transform:translateY(calc((1_-_var(--item-progress))_*_38px))] [&>:focus-within]:opacity-[1]
-              [&>:focus-within]:[transform:none] [&>:focus-visible]:opacity-[1] [&>:focus-visible]:[transform:none]
-              [&>*]:[@media(prefers-reduced-motion:_reduce)]:opacity-[1]
-              [&>*]:[@media(prefers-reduced-motion:_reduce)]:[transform:none]"
-              >
-                <div className="service-story-label flex items-center gap-[12px] text-[11px] text-[var(--accent)]">
-                  <Icon size={19} />
-                  <span>
-                    0{i + 1} / {label}
-                  </span>
-                </div>
-                <h3>
-                  {title.split("\n").map((line, index) => (
-                    <span key={line}>{index ? <em>{line}</em> : line}</span>
-                  ))}
-                </h3>
-                <p>{text}</p>
-                <ul>
-                  {tags.map((tag) => (
-                    <li key={tag}>{tag}</li>
-                  ))}
-                </ul>
-                <button
-                  className="text-link flex items-center justify-between w-full [background:transparent] p-[25px_0px_0px] mt-[25px]
-              [border-top:1px_solid_rgb(220,_216,_207)] text-[12px] text-[rgb(53,_59,_75)]
-              [border-right-color:rgb(220,_216,_207)] [border-bottom-color:rgb(220,_216,_207)]
-              [border-left-color:rgb(220,_216,_207)] [@media(width<=650px)]:pt-[18px] [@media(width<=650px)]:mt-[20px]
-              [&_svg]:[transition:transform_0.25s] [&:hover_svg]:[transform:translate(3px,_-3px)]"
-                  onClick={onStartProject}
-                >
-                  Vamos criar juntos <ArrowUpRight size={18} />
-                </button>
+      <div className="service-track">
+        <div className="service-narrative">
+          {offerings.map((offering, i) => (
+            <article className="service-story" id={`servico-${offering.id}`} key={offering.id}>
+              <div className="service-story-copy">
+                <div className="service-story-label"><span>0{i + 1}</span>{offering.label}</div>
+                <h3>{offering.title.split('\n').map((line, index) => <span key={line}>{index ? <em>{line}</em> : line}</span>)}</h3>
+                <p>{offering.text}</p>
+                <ul>{offering.tags.map(tag => <li key={tag}><Check size={16} />{tag}</li>)}</ul>
+                <button className="service-start" onClick={onStartProject}>Vamos criar juntos <span><ArrowUpRight size={20} /></span></button>
               </div>
-              <div
-                className="service-scene [container-type:inline-size] relative grid place-items-center h-[500px]
-              [background:rgb(240,_236,_229)] [border:1px_solid_rgb(230,_223,_213)] rounded-[20px] isolate overflow-hidden
-              [perspective:1000px] [@media(width<=650px)]:h-auto [@media(width<=650px)]:rounded-[15px]
-              [@media(width<=650px)]:aspect-[1_/_1.1] [@media(651px<=width<=900px)]:h-[430px]"
-                aria-hidden="true"
-              >
-                <div
-                  className="service-scene-halo absolute inset-[0px] z-[-1]
-              [background:radial-gradient(at_50%_60%,_rgba(233,_172,_151,_0.376),_transparent_70%)]
-              [transform:scale(calc(.7_+_var(--scene-progress)_*_.3))]
-              [@media(prefers-reduced-motion:_reduce)]:[transform:none] [@media(prefers-reduced-motion:_reduce)]:opacity-[1]"
-                />
-                <Preview type={id} />
-                <span
-                  className="service-demo-caption absolute bottom-[18px] text-[8px] tracking-[1.4px] text-[rgb(132,_124,_115)]
-              [@media(width<=650px)]:bottom-[14px] [@media(width<=650px)]:text-[7px]"
-                >
-                  INTERFACE DEMONSTRATIVA / 0{i + 1}
-                </span>
-              </div>
+              <Scene offering={offering} index={i} />
             </article>
           ))}
         </div>
-        <div
-          className="service-pinned sticky top-[110px] h-[min(500px,_-140px_+_100svh)] mt-[max(35px,_-250px_+_42.5vh)]
-              [@media(width<=650px)]:hidden [@media(651px<=width<=900px)]:h-[min(430px,_-140px_+_100svh)]
-              [&_.service-scene]:absolute [&_.service-scene]:inset-[0px] [&_.service-scene]:h-full
-              [&_.service-scene]:opacity-[0] [&_.service-scene]:invisible
-              [&_.service-scene]:[transform:translateY(24px)_scale(0.97)]
-              [&_.service-scene]:[transition:opacity_0.45s,_transform_0.6s_cubic-bezier(0.2,_0.7,_0.2,_1),_visibility_0.45s]
-              [&_.service-scene]:pointer-events-none [&_.service-scene[data-active=true]]:opacity-[1]
-              [&_.service-scene[data-active=true]]:visible [&_.service-scene[data-active=true]]:[transform:none]
-              [&_.service-device]:max-h-[95%] [&_.service-notification]:[transition:opacity_0.4s_0.15s,_translate_0.5s_0.15s]
-              [&_[data-active=false]_.service-notification]:opacity-[0]
-              [&_[data-active=false]_.service-notification]:[translate:35px]
-              [&_.service-scene]:[@media(prefers-reduced-motion:_reduce)]:[transition:none]
-              [&_.service-scene]:[@media(prefers-reduced-motion:_reduce)]:[transform:none]"
-          aria-hidden="true"
-        >
-          {offerings.map(({ id }, i) => (
-            <div
-              className={
-                `service-scene service-pinned-${id}` +
-                " [container-type:inline-size] relative grid place-items-center h-[500px] [background:rgb(240,_236,_229)] [border:1px_solid_rgb(230,_223,_213)] rounded-[20px] isolate overflow-hidden [perspective:1000px] [@media(width<=650px)]:h-auto [@media(width<=650px)]:rounded-[15px] [@media(width<=650px)]:aspect-[1_/_1.1] [@media(651px<=width<=900px)]:h-[430px] [&.service-pinned-mobile]:[background:rgb(234,_236,_231)] [&.service-pinned-desktop]:[background:rgb(232,_235,_239)]"
-              }
-              data-active={i === 0 ? "true" : "false"}
-              key={id}
-            >
-              <div
-                className="service-scene-halo absolute inset-[0px] z-[-1]
-              [background:radial-gradient(at_50%_60%,_rgba(233,_172,_151,_0.376),_transparent_70%)]
-              [transform:scale(calc(.7_+_var(--scene-progress)_*_.3))]
-              [@media(prefers-reduced-motion:_reduce)]:[transform:none] [@media(prefers-reduced-motion:_reduce)]:opacity-[1]"
-              />
-              <Preview type={id} />
-              <span
-                className="service-demo-caption absolute bottom-[18px] text-[8px] tracking-[1.4px] text-[rgb(132,_124,_115)]
-              [@media(width<=650px)]:bottom-[14px] [@media(width<=650px)]:text-[7px]"
-              >
-                INTERFACE DEMONSTRATIVA / 0{i + 1}
-              </span>
-            </div>
-          ))}
+        <div className="service-pinned" aria-hidden="true">
+          {offerings.map((offering, i) => <Scene key={offering.id} offering={offering} index={i} pinned />)}
         </div>
       </div>
+      <div className="service-endnote"><span>Uma experiência consistente. Em todas as telas.</span><span>ESTRATÉGIA · DESIGN · DESENVOLVIMENTO</span></div>
     </section>
   );
 }
