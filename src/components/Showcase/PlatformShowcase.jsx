@@ -1,3 +1,4 @@
+import BrandLogo from "../ui/BrandLogo";
 import {
   Search,
   Bell,
@@ -20,34 +21,34 @@ import {
 export default function PlatformShowcase() {
   return (
     <figure
-      className="platform-showcase m-[56px_0px_0px] [@media(width<=650px)]:mt-[38px] [&_figcaption]:mt-[6px]
-              [&_figcaption]:text-[10px] [&_figcaption]:tracking-[0.4px] [&_figcaption]:text-[rgb(113,_117,_123)]
+      className="platform-showcase m-[56px_0px_0px] [@media(width<=650px)]:mt-9.5 [&_figcaption]:mt-1.5
+              [&_figcaption]:text-[10px] [&_figcaption]:tracking-[0.4px] [&_figcaption]:text-[rgb(113,117,123)]
               [&_figcaption]:text-center [&_figcaption]:[@media(width<=650px)]:m-[12px_0px_20px]
               [&_figcaption]:[@media(width<=650px)]:text-[8px]"
       aria-label="Exemplos de um site no navegador, um sistema em computador e uma interface para celular"
     >
       <div
-        className="platform-stage [container-type:inline-size] relative aspect-[2_/_1] text-left isolate
-              [@media(width<=650px)]:aspect-[1.65_/_1] [&_:where(svg)]:w-[1.2cqw] [&_:where(svg)]:h-[1.2cqw]
+        className="platform-stage [container-type:inline-size] relative aspect-2/1 text-left isolate
+              [@media(width<=650px)]:aspect-[1.65/1] [&_:where(svg)]:w-[1.2cqw] [&_:where(svg)]:h-[1.2cqw]
               [&_:where(svg)]:shrink-0"
         aria-hidden="true"
       >
         <div
-          className="platform-shadow absolute w-[85%] left-[8%] bottom-[5%] h-[7%] [background:rgba(34,_35,_35,_0.082)]
-              [filter:blur(18px)] rounded-[50%]"
+          className="platform-shadow absolute w-[85%] left-[8%] bottom-[5%] h-[7%] [background:rgba(34,35,35,0.082)]
+              filter-[blur(18px)] rounded-[50%]"
         />
         <div
-          className="device-monitor absolute w-[66%] left-[20%] top-[0px] [@media(width<=650px)]:w-[76%]
+          className="device-monitor absolute w-[66%] left-[20%] top-0 [@media(width<=650px)]:w-[76%]
               [@media(width<=650px)]:left-[12%]"
         >
           <div
-            className="monitor-frame [background:linear-gradient(135deg,_rgb(84,_86,_90),_rgb(32,_34,_38)_45%,_rgb(63,_65,_68))]
-              p-[1.65cqw_0.85cqw_0.85cqw] [border:0.15cqw_solid_rgb(101,_103,_107)] rounded-[1.5cqw_1.5cqw_0px_0px] relative
-              [box-shadow:rgba(33,_36,_42,_0.098)_0px_1.5cqw_5cqw]"
+            className="monitor-frame [background:linear-gradient(135deg,rgb(84,86,90),rgb(32,34,38)_45%,rgb(63,65,68))]
+              p-[1.65cqw_0.85cqw_0.85cqw] [border:0.15cqw_solid_rgb(101,103,107)] rounded-[1.5cqw_1.5cqw_0px_0px] relative
+              [box-shadow:rgba(33,36,42,0.098)_0px_1.5cqw_5cqw]"
           >
             <i
               className="monitor-camera absolute top-[0.6cqw] left-[50%] w-[0.4cqw] h-[0.4cqw] rounded-[50%]
-              [background:rgb(11,_16,_24)] [box-shadow:rgb(118,_138,_171)_0px_0px_0.1cqw_inset]"
+              [background:rgb(11,16,24)] [box-shadow:rgb(118,_138,_171)_0px_0px_0.1cqw_inset]"
             />
             <div
               className="monitor-screen flex h-[32cqw] [background:rgb(247,_248,_250)] rounded-[0.3cqw] overflow-hidden
@@ -65,7 +66,7 @@ export default function PlatformShowcase() {
               [&_.system-settings]:bottom-[1cqw]"
               >
                 <strong>
-                  <span>g</span> goengine
+                  <BrandLogo light className="h-[3cqw] w-[11cqw]" />
                 </strong>
                 <small>GESTÃO</small>
                 <div className="active">
@@ -168,7 +169,7 @@ export default function PlatformShowcase() {
               [background:linear-gradient(110deg,_rgb(182,_185,_187),_rgb(225,_227,_228)_48%,_rgb(184,_187,_190))] grid
               place-items-center text-[rgb(105,_108,_112)] text-[0.7cqw] [font-weight:650] tracking-[-0.04cqw]"
           >
-            <span>goengine</span>
+            <BrandLogo className="h-[1.4cqw] w-[5cqw]" />
           </div>
           <div
             className="monitor-neck w-[16%] h-[6cqw] m-[auto] [background:linear-gradient(rgb(145,_148,_151),_rgb(216,_218,_221)_82%)]
@@ -234,7 +235,7 @@ export default function PlatformShowcase() {
               [&>i]:text-[rgb(155,_57,_40)] [&>svg]:w-[1cqw] [&>svg]:h-[1cqw]"
             >
               <strong>
-                <span>g</span> goengine
+                <BrandLogo className="h-[2.4cqw] w-[8cqw]" />
               </strong>
               <span className="portal-active">Meus projetos</span>
               <span>Arquivos</span>

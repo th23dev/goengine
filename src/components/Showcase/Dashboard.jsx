@@ -1,6 +1,6 @@
+import BrandLogo from "../ui/BrandLogo";
 import { useId } from "react";
 import {
-  Zap,
   LayoutDashboard,
   BarChart3,
   Users,
@@ -43,7 +43,7 @@ export default function Dashboard() {
             className="mini-logo text-[20px] tracking-[-1px] font-[750] flex items-center gap-1 mb-6
               [&_svg]:text-(--accent) [&_span]:text-[8px]"
           >
-            <Zap size={16} fill="currentColor" /> orbit<span>®</span>
+            <BrandLogo className="h-7 w-[100px]" />
           </div>
           <small>WORKSPACE</small>
           {[

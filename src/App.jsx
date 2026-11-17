@@ -1,18 +1,18 @@
 import { useState } from "react";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Services from "./components/Services";
-import Projects from "./components/Projects";
-import Process from "./components/Process";
-import FAQ from "./components/FAQ";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import WhatsAppDialog from "./components/WhatsAppDialog";
-import WhatsAppFloating from "./components/WhatsAppFloating";
-import About from "./components/About";
+import Header from "./components/sections/Header";
+import Hero from "./components/sections/Hero";
+import Services from "./components/sections/Services";
+import Projects from "./components/sections/Projects";
+import Process from "./components/sections/Process";
+import FAQ from "./components/sections/FAQ";
+import Contact from "./components/sections/Contact";
+import Footer from "./components/sections/Footer";
+import WhatsAppDialog from "./components/ui/WhatsAppDialog";
+import WhatsAppFloating from "./components/ui/WhatsAppFloating";
+import About from "./components/sections/About";
 import useMotion from "./hooks/useMotion";
 import usePageLoading from "./hooks/usePageLoading";
-import PageSkeleton from "./components/PageSkeleton";
+import PageSkeleton from "./components/ui/PageSkeleton";
 export default function App() {
   const loading = usePageLoading();
   useMotion(!loading);
@@ -21,9 +21,9 @@ export default function App() {
   return (
     <div className="app-shell">
       {loading && <PageSkeleton />}
-      <div className="app-content" data-loading={loading} aria-busy={loading} inert={loading}>
+      <div className="app-content group/page" data-loading={loading} aria-busy={loading} inert={loading}>
       <a
-        className="skip fixed top-[-100px] left-[20px] [background:white] p-[10px] z-[100] [&:focus]:top-[10px]"
+        className="skip fixed -top-25-[20px] [background:white] p-2.5[z-100:focus]:top-[10px]"
         href="#conteudo"
       >
         Pular para conteúdo
