@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import Logo from "./Logo";
 import "./Header.css";
 
 const chapters = [
@@ -58,7 +57,9 @@ export default function Header({ onStartProject }) {
   return (
     <header className="site-header" ref={header}>
       <div className="header-inner">
-        <div onClick={() => setMenu(false)}><Logo /></div>
+        <a className="header-logo" href="#inicio" aria-label="goengine — início" onClick={() => setMenu(false)}>
+          <img src={`${import.meta.env.BASE_URL}logo-header-transparent.png`} alt="goengine" width="2172" height="724" />
+        </a>
         <nav className={`nav-links${menu ? " expanded" : ""}`} id="main-navigation" aria-label="Principal">
           {chapters.slice(1).map(([label, id]) => <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} onClick={() => setMenu(false)}>{label}</a>)}
         </nav>

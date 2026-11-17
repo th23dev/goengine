@@ -1,0 +1,34 @@
+/* Shared page gutters and section spacing across all breakpoints. */
+:root {
+  --page-gutter: 48px;
+  --page-max-width: 1200px;
+  --section-space: 110px;
+}
+.app-shell .layout-container,
+.app-shell .service-experience,
+.app-shell .header-inner {
+  width: min(var(--page-max-width), calc(100% - var(--page-gutter) * 2));
+  margin-inline: auto;
+}
+.app-shell .header-chapter-bar {
+  padding-inline: max(var(--page-gutter), calc((100% - var(--page-max-width)) / 2));
+}
+.app-shell .about,
+.app-shell .service-experience,
+.app-shell .work-section,
+.app-shell .process,
+.app-shell .faq-section {
+  padding-block: var(--section-space);
+}
+.app-shell .portfolio-projects {
+  --carousel-inset: max(var(--page-gutter), calc((100vw - var(--page-max-width)) / 2));
+}
+@media (min-width: 1500px) {
+  :root { --page-gutter: 80px; --page-max-width: 1280px; }
+}
+@media (min-width: 651px) and (max-width: 1000px) {
+  :root { --page-gutter: 28px; }
+}
+@media (max-width: 650px) {
+  :root { --page-gutter: 20px; --section-space: 70px; }
+}

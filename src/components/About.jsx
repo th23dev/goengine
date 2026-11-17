@@ -9,7 +9,14 @@ const principles = [
 
 export default function About() {
   return (
-    <section className="about section" id="sobre" aria-labelledby="about-title">
+    <section
+      className="about section layout-container w-[min(1200px,_100%_-_96px)] m-auto py-[110px]
+        [@media(width<=650px)]:w-[calc(100%_-_40px)] [@media(width<=650px)]:py-[70px]
+        [@media(651px<=width<=1000px)]:w-[calc(100%_-_56px)]
+        [@media(1500px<=width)]:w-[min(1280px,_100%_-_160px)]"
+      id="sobre"
+      aria-labelledby="about-title"
+    >
       <div className="about-copy">
         <span className="about-eyebrow"><i aria-hidden="true" /> ESSÊNCIA GOENGINE</span>
         <h2 id="about-title">O digital<br />tem que fazer<br /><em>sentido.</em></h2>

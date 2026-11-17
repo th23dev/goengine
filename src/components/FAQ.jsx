@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Plus, Minus } from "lucide-react";
+import { Plus, ArrowUpRight } from "lucide-react";
 import { questions } from "../data/content";
+import "./FAQ.css";
 export default function FAQ() {
   const [faq, setFaq] = useState(0);
   return (
@@ -26,33 +27,34 @@ export default function FAQ() {
           <br />
           Respostas claras.
         </h2>
-        <p>Vamos tornar o próximo passo mais simples.</p>
+        <p>Do primeiro orçamento à entrega: entenda como escolher uma solução, planejar o investimento e acompanhar seu projeto.</p>
+        <a className="faq-contact" href="#contato">Quer conversar sobre sua ideia? <ArrowUpRight size={18} /></a>
       </div>
       <div className="faq-list">
-        {questions.map(([q, a], i) => (
+        {questions.map(([q, a, summary, details], i) => (
           <div
-            className="faq-item [border-bottom:1px_solid_rgb(217,214,206)] border-t-[rgb(217,214,206)]
-              border-r-[rgb(217,214,206)] border-l-[rgb(217,214,206)]
-              first:[border-top:1px_solid_rgb(226,229,236)] [&_h3_button]:[background:transparent]
-              [&_h3_button]:flex [&_h3_button]:w-full [&_h3_button]:justify-between [&_h3_button]:text-left
-              [&_h3_button]:gap-5 [&_h3_button]:items-center [&_h3_button]:p-[25px_0px] [&_h3_button]:text-[17px]
-              [&_h3_button]:font-medium [&_h3_button]:text-[rgb(51,57,70)] [&_h3_svg]:shrink-0
-              [&_h3_svg]:text-(--accent) [&_p]:text-[19px] [&_p]:leading-[1.9] [&_p]:text-[rgb(98,99,106)]
-              [&_p]:p-[0px_25px_23px_0px]"
+            className="faq-item"
+            data-open={faq === i}
             key={q}
           >
             <h3>
               <button
+                type="button"
+                id={"question-" + i}
                 aria-expanded={faq === i}
                 aria-controls={"answer-" + i}
                 onClick={() => setFaq(faq === i ? -1 : i)}
               >
-                {q}
-                {faq === i ? <Minus size={18} /> : <Plus size={18} />}
+                <span className="faq-number" aria-hidden="true">0{i + 1}</span>
+                <span className="faq-question-copy"><span>{q}</span><small>{summary}</small></span>
+                <span className="faq-toggle" aria-hidden="true"><Plus size={18} /></span>
               </button>
             </h3>
-            <div id={"answer-" + i} hidden={faq !== i}>
-              <p>{a}</p>
+            <div className="faq-answer" id={"answer-" + i} role="region" aria-labelledby={"question-" + i} aria-hidden={faq !== i} inert={faq !== i}>
+              <div className="faq-answer-clip"><div className="faq-answer-content">
+                <p>{a}</p>
+                <ul>{details.map(detail => <li key={detail}>{detail}</li>)}</ul>
+              </div></div>
             </div>
           </div>
         ))}

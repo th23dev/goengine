@@ -1,0 +1,40 @@
+.whatsapp-dialog { position: fixed; inset: 0; width: min(540px, calc(100% - 32px)); max-width: none; max-height: calc(100dvh - 32px); margin: auto; padding: 0; border: 1px solid #ffffffb3; border-radius: 26px; background: var(--paper); color: var(--ink); box-shadow: 0 32px 100px #17171940; overflow-y: auto; overscroll-behavior: contain; }
+.whatsapp-dialog::backdrop { background: #17171980; backdrop-filter: blur(9px); }
+.whatsapp-close { position: absolute; top: 18px; right: 18px; z-index: 1; display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid #e4ddd5; border-radius: 50%; color: var(--muted); background: #ffffffb3; transition: background .2s, color .2s; }
+.whatsapp-close:hover { background: white; color: var(--accent); }
+.whatsapp-intro { padding: 36px 36px 28px; background: radial-gradient(ellipse at 100% 0, #f7dfd2 0, transparent 65%); }
+.whatsapp-eyebrow { display: flex; align-items: center; gap: 8px; padding-right: 25px; color: var(--accent); font-size: 10px; letter-spacing: 1.5px; font-weight: 650; }
+.whatsapp-eyebrow > span { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.whatsapp-symbol { display: grid; place-items: center; position: relative; width: 58px; height: 58px; border-radius: 18px; margin: 25px 0 20px; color: var(--accent); background: #f8e8df; border: 1px solid #efd5c7; rotate: -5deg; }
+.whatsapp-symbol > span { position: absolute; right: -6px; bottom: -4px; display: grid; place-items: center; width: 23px; height: 23px; border-radius: 50%; background: var(--accent); color: white; font-size: 15px; }
+.whatsapp-intro h2 { font-size: clamp(28px, 5vw, 35px); line-height: 1.15; letter-spacing: -1.5px; }
+.whatsapp-intro h2 em { color: var(--accent); font-style: normal; }
+.whatsapp-intro > p { margin-top: 15px; font-size: 16px; line-height: 1.7; color: var(--muted); max-width: 420px; }
+.whatsapp-options { padding: 24px 36px 26px; border-top: 1px solid #e8e0d7; background: #ffffff50; }
+.whatsapp-options-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 15px; color: var(--muted); font-size: 11px; }
+.whatsapp-options-heading > span:first-child { letter-spacing: 1px; font-size: 10px; font-weight: 600; }
+.whatsapp-option { display: flex; align-items: center; gap: 16px; border: 1px solid #e4ded6; border-radius: 15px; padding: 18px; background: white; margin-top: 10px; transition: border-color .2s, box-shadow .2s, translate .2s; }
+.whatsapp-option:hover { border-color: #db9c87; box-shadow: 0 8px 22px #57342309; translate: 0 -2px; }
+.whatsapp-option-icon { position: relative; flex-shrink: 0; display: grid; place-items: center; width: 43px; height: 46px; border-radius: 12px; background: #f8f0e9; color: var(--accent); }
+.whatsapp-option-icon small { position: absolute; right: -4px; bottom: -4px; padding: 2px 4px; border-radius: 4px; background: white; font-size: 9px; color: var(--muted); }
+.whatsapp-option-copy { flex: 1; display: grid; gap: 4px; }
+.whatsapp-option-copy > span { font-size: 12px; color: var(--muted); }
+.whatsapp-option-copy strong { font-size: 18px; letter-spacing: -.4px; font-weight: 650; white-space: nowrap; }
+.whatsapp-option-copy small { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--accent); margin-top: 3px; }
+.whatsapp-option-arrow { color: var(--muted); transition: transform .2s, color .2s; }
+.whatsapp-option:hover .whatsapp-option-arrow { transform: translate(2px, -2px); color: var(--accent); }
+.whatsapp-note { margin-top: 18px; text-align: center; font-size: 11px; line-height: 1.6; color: var(--muted); }
+@media (max-width: 480px) {
+  .whatsapp-dialog { border-radius: 20px; }
+  .whatsapp-intro { padding: 32px 22px 24px; }
+  .whatsapp-options { padding: 22px; }
+  .whatsapp-option { padding: 15px 12px; gap: 12px; }
+  .whatsapp-option-copy strong { font-size: 16px; }
+  .whatsapp-eyebrow { font-size: 9px; letter-spacing: 1px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .whatsapp-dialog[open] { animation: whatsapp-arrive .3s cubic-bezier(.22, 1, .36, 1) both; }
+  .whatsapp-dialog[open]::backdrop { animation: whatsapp-dim .25s ease both; }
+  @keyframes whatsapp-arrive { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: none; } }
+  @keyframes whatsapp-dim { from { opacity: 0; } to { opacity: 1; } }
+}

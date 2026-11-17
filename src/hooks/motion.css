@@ -1,0 +1,25 @@
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-reveal {
+    opacity: 0;
+    translate: 0 28px;
+    transition: opacity .75s ease var(--reveal-delay, 0ms), translate .85s cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms), rotate .85s cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms), scale .85s cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms);
+  }
+  .scroll-reveal[data-reveal="slide"] { translate: -28px 16px; }
+  .scroll-reveal[data-reveal="rise"] { translate: 0 38px; scale: .98; }
+  .scroll-reveal[data-reveal="card"] { translate: 0 38px; rotate: 1.5deg; scale: .96; transform-origin: center bottom; }
+  .scroll-reveal.revealed, .scroll-reveal:focus-within { opacity: 1; translate: 0 0; rotate: 0deg; scale: 1; }
+  .contact-orbit { translate: 0 var(--scroll-drift, 0px); rotate: var(--scroll-turn, 0deg); }
+  /* Keep the full-width mask fixed; animate only the oversized gradient inside it. */
+  .hero-waves::before { translate: 0 var(--scroll-drift, 0px); }
+  .steps > article.revealed .step-number { animation: step-arrive .9s cubic-bezier(.22, 1, .36, 1) both; }
+  @keyframes step-arrive { from { opacity: 0; transform: translateY(15px) rotate(-12deg); } to { opacity: 1; transform: none; } }
+}
+@media (max-width: 650px) {
+  .scroll-reveal[data-reveal="slide"] { translate: 0 20px; }
+  .scroll-reveal.revealed { translate: 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal { opacity: 1; translate: none; rotate: none; scale: none; }
+  .contact-orbit, .hero-waves { translate: none; rotate: none; }
+  .hero-waves::before { translate: none; }
+}

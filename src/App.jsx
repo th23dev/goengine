@@ -7,40 +7,43 @@ import Process from "./components/Process";
 import FAQ from "./components/FAQ";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import BriefingDialog from "./components/BriefingDialog";
+import WhatsAppDialog from "./components/WhatsAppDialog";
+import WhatsAppFloating from "./components/WhatsAppFloating";
 import About from "./components/About";
 import useMotion from "./hooks/useMotion";
+import usePageLoading from "./hooks/usePageLoading";
+import PageSkeleton from "./components/PageSkeleton";
 export default function App() {
-  useMotion();
-  const [briefingOpen, setBriefingOpen] = useState(false);
-  const openBriefing = () => setBriefingOpen(true);
+  const loading = usePageLoading();
+  useMotion(!loading);
+  const [whatsappOpen, setWhatsappOpen] = useState(false);
+  const openWhatsApp = () => setWhatsappOpen(true);
   return (
-    <>
+    <div className="app-shell">
+      {loading && <PageSkeleton />}
+      <div className="app-content" data-loading={loading} aria-busy={loading} inert={loading}>
       <a
         className="skip fixed top-[-100px] left-[20px] [background:white] p-[10px] z-[100] [&:focus]:top-[10px]"
         href="#conteudo"
       >
         Pular para conteúdo
       </a>
-      <Header onStartProject={openBriefing} />
+      <Header onStartProject={openWhatsApp} />
       <main id="conteudo">
-        <Hero onStartProject={openBriefing} />
+        <Hero onStartProject={openWhatsApp} />
         <About />
-        <Services onStartProject={openBriefing} />
-        <Projects onStartProject={openBriefing} />
+        <Services onStartProject={openWhatsApp} />
+        <Projects onStartProject={openWhatsApp} />
         <Process />
         <FAQ />
-        <Contact onStartProject={openBriefing} />
+        <Contact onStartProject={openWhatsApp} />
       </main>
-      <Footer onStartProject={openBriefing} />
-      {briefingOpen && (
-        <div
-          className="modal-overlay fixed inset-[0px] [background:rgba(0,_0,_0,_0.5)] [backdrop-filter:blur(8px)] z-[100] flex
-              items-center justify-center p-[20px] [overflow-y:auto]"
-        >
-          <BriefingDialog close={() => setBriefingOpen(false)} />
-        </div>
+      <Footer onStartProject={openWhatsApp} />
+      <WhatsAppFloating onClick={openWhatsApp} />
+      </div>
+      {whatsappOpen && (
+        <WhatsAppDialog close={() => setWhatsappOpen(false)} />
       )}
-    </>
+    </div>
   );
 }

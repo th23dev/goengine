@@ -1,4 +1,7 @@
-import { ArrowUpRight } from "lucide-react";
+import WhatsAppIcon from "./WhatsAppIcon";
+import { ArrowUpRight, Instagram } from "lucide-react";
+import "./Contact.css";
+import { socialContacts } from "../data/contacts";
 export default function Contact({ onStartProject }) {
   return (
     <section
@@ -9,9 +12,7 @@ export default function Contact({ onStartProject }) {
               [&_.eyebrow]:text-[rgb(255,_242,_232)] [&_.eyebrow]:text-[12px] [&_h2]:text-[clamp(48px,_5.5vw,_80px)]
               [&_h2]:tracking-[-0.06em] [&_h2]:relative [&_h2]:[font-weight:800] [&_h2]:[@media(width<=650px)]:text-[44px]
               [&_h2>span]:text-[rgb(255,_224,_207)] [&_h2>span]:font-display [&_h2>span]:not-italic
-              [&_p]:text-[18px] [&_p]:leading-[1.8] [&_p]:text-[rgb(255,_242,_232)] [&_p]:mt-[20px] [&_p]:relative
-              [&_.contact-pending]:relative [&_.contact-pending]:block [&_.contact-pending]:mt-[20px]
-              [&_.contact-pending]:text-[15px] [&_.contact-pending]:text-[white]"
+              [&_p]:text-[18px] [&_p]:leading-[1.8] [&_p]:text-[rgb(255,_242,_232)] [&_p]:mt-[20px] [&_p]:relative"
       id="contato"
     >
       <div
@@ -59,9 +60,17 @@ export default function Contact({ onStartProject }) {
       >
         DA IDEIA AO DIGITAL. COM GOENGINE.
       </span>
-      <span className="contact-pending">
-        E-mail / WhatsApp comercial: a preencher.
-      </span>
+      <nav className="contact-socials" aria-label="Redes sociais e contato">
+        <a className="contact-social" href={socialContacts.instagram} aria-label="Instagram de @th23dev" title="Instagram · @th23dev" target="_blank" rel="noopener noreferrer">
+          <Instagram size={24} aria-hidden="true" />
+        </a>
+        <a className="contact-social" href={socialContacts.tiktok} aria-label="TikTok de @th23dev" title="TikTok · @th23dev" target="_blank" rel="noopener noreferrer">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 0h-4.1v16.4a3.4 3.4 0 1 1-2.9-3.36V8.88a7.5 7.5 0 1 0 7 7.48V8.1A9.8 9.8 0 0 0 22 9.7V5.6A5.6 5.6 0 0 1 16.6 0Z" /></svg>
+        </a>
+        <button className="contact-social" type="button" onClick={onStartProject} aria-label="Conversar pelo WhatsApp" aria-haspopup="dialog" title="WhatsApp">
+          <WhatsAppIcon size={24} />
+        </button>
+      </nav>
     </section>
   );
 }

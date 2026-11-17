@@ -16,6 +16,9 @@
 @media (max-width: 650px) { .chapter-signature { display: none; } .chapter-readout { gap: 10px; } .chapter-window { width: 95px; } .chapter-segments { gap: 3px; height: 6px; } }
 @media (prefers-reduced-motion: reduce) { .chapter-window > span { animation: none; } }
 .header-inner { width: min(1200px, calc(100% - 96px)); height: 80px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.header-logo { display: block; position: relative; width: 210px; height: 45px; flex-shrink: 0; overflow: hidden; }
+.header-logo img { display: block; position: absolute; width: 116%; max-width: none; height: auto; left: -7.6%; top: -43%; }
+@media (max-width: 650px) { .header-logo { width: 170px; height: 36px; } }
 .nav-links { display: flex; position: relative; align-items: center; gap: 2px; }
 .nav-links a { position: relative; z-index: 1; padding: 12px 11px; white-space: nowrap; font-size: 15px; color: #60616a; transition: color .25s; }
 .nav-links a:hover, .nav-links a[aria-current] { color: var(--accent); }
