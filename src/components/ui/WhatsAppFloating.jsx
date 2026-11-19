@@ -9,7 +9,7 @@ export default function WhatsAppFloating({ onClick }) {
       aria-label="Conversar pelo WhatsApp"
       aria-haspopup="dialog"
     >
-      <WhatsAppIcon size={29} />
+      <span className="whatsapp-floating-icon grid place-items-center"><WhatsAppIcon size={29} /></span>
       <span className="pointer-events-none absolute right-[calc(100%+12px)] translate-x-[5px] whitespace-nowrap rounded-xl border border-[#e4ded6] bg-paper px-[14px] py-[10px] text-[13px] text-ink opacity-0 transition-all group-focus-visible:translate-x-0 group-focus-visible:opacity-100 group-hover:translate-x-0 group-hover:opacity-100 motion-reduce:transition-none">Vamos conversar?</span>
     </button>
   );

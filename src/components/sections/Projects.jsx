@@ -21,6 +21,16 @@ const projects = [
     alt: "Portal Vem Viver Curuçá com paisagem natural e acesso ao guia turístico do município.",
     linkLabel: "Visitar Vem Viver Curuçá (abre em nova aba)",
   },
+  {
+    name: "Terminal de Navegação Turística",
+    category: "Totem turístico interativo",
+    description: "Uma experiência de navegação criada para o totem da Secretaria de Turismo de Curuçá, apresentando atrações e informações úteis aos visitantes.",
+    url: "https://th23dev.github.io/sec-turismo-curuca/",
+    domain: "th23dev.github.io/sec-turismo-curuca",
+    image: "projects/totem-curuca.jpg",
+    alt: "Tela inicial do Terminal de Navegação Turística de Curuçá, desenvolvido para uso em totem da Secretaria de Turismo.",
+    linkLabel: "Visitar Terminal de Navegação Turística de Curuçá (abre em nova aba)",
+  },
 ];
 const invitations = [
   { category: "Sites e landing pages", text: "Uma presença digital com a identidade da sua marca." },
@@ -88,7 +98,7 @@ export default function Projects({ onStartProject }) {
           <span>Projetos reais. O próximo pode ser o seu.</span>
           <div><button type="button" aria-label="Projetos anteriores" aria-controls="projects-carousel" disabled={position.start} onClick={() => move(-1)}><ArrowLeft size={21} /></button><button type="button" aria-label="Próximos projetos" aria-controls="projects-carousel" disabled={position.end} onClick={() => move(1)}><ArrowRight size={21} /></button></div>
         </div>
-        <div className="portfolio-projects [--carousel-inset:max(48px,_calc((100vw_-_1200px)_/_2))] [display:flex] [gap:28px] [width:100vw] [margin-left:calc((100%_-_100vw)_/_2)] [overflow-x:auto] [scroll-snap-type:x_mandatory] [scroll-padding-inline:var(--carousel-inset)] [overscroll-behavior-x:contain] [padding:8px_var(--carousel-inset)_25px] [scrollbar-width:none] [mask-image:linear-gradient(to_right,_transparent,_black_6%,_black_94%,_transparent)] [&::-webkit-scrollbar]:[display:none] [&_>_article]:[flex:0_0_clamp(300px,_39vw,_530px)] [&_>_article]:[min-width:0] [&_>_article]:[scroll-snap-align:start] [&_.portfolio-link:focus-visible]:[outline-offset:-4px] [@media(min-width:_1500px)]:[--carousel-inset:max(80px,_calc((100vw_-_1280px)_/_2))] [@media(min-width:_651px)_and_(max-width:_1000px)]:[--carousel-inset:28px] [@media(max-width:_650px)]:[--carousel-inset:20px] [@media(max-width:_650px)]:[gap:18px] [@media(max-width:_650px)]:[mask-image:linear-gradient(to_right,_transparent,_black_5%,_black_95%,_transparent)] [@media(max-width:_650px)]:[&_>_article]:[flex-basis:82vw]" id="projects-carousel" ref={track} role="region" aria-roledescription="carrossel" aria-label="Projetos da Goengine e possibilidades para o seu negócio" tabIndex={0}>
+        <div className="portfolio-projects [--carousel-inset:max(48px,_calc((100vw_-_1200px)_/_2))] [display:flex] [gap:28px] [width:100vw] [margin-left:calc((100%_-_100vw)_/_2)] [overflow-x:auto] [overflow-y:hidden] [scroll-snap-type:x_mandatory] [scroll-padding-inline:var(--carousel-inset)] [overscroll-behavior-x:contain] [padding:8px_var(--carousel-inset)_25px] [scrollbar-width:none] [mask-image:linear-gradient(to_right,_transparent,_black_6%,_black_94%,_transparent)] [&::-webkit-scrollbar]:[display:none] [&_>_article]:[flex:0_0_clamp(300px,_39vw,_530px)] [&_>_article]:[min-width:0] [&_>_article]:[scroll-snap-align:start] [&_.portfolio-link:focus-visible]:[outline-offset:-4px] [@media(min-width:_1500px)]:[--carousel-inset:max(80px,_calc((100vw_-_1280px)_/_2))] [@media(min-width:_651px)_and_(max-width:_1000px)]:[--carousel-inset:28px] [@media(max-width:_650px)]:[--carousel-inset:20px] [@media(max-width:_650px)]:[gap:18px] [@media(max-width:_650px)]:[mask-image:linear-gradient(to_right,_transparent,_black_5%,_black_95%,_transparent)] [@media(max-width:_650px)]:[&_>_article]:[flex-basis:82vw]" id="projects-carousel" ref={track} role="region" aria-roledescription="carrossel" aria-label="Projetos da Goengine e possibilidades para o seu negócio" tabIndex={0}>
           {projects.map(project => (
             <article key={project.name}>
               <a className="portfolio-link group [display:flex] [flex-direction:column] [height:100%] [border-radius:12px] [&:hover_img]:[transform:scale(1.025)] [&:hover_.portfolio-title_>_svg]:[transform:translate(3px,_-3px)] [@media(prefers-reduced-motion:_reduce)]:[&:hover_img]:[transform:none] [@media(prefers-reduced-motion:_reduce)]:[&:hover_.portfolio-title_>_svg]:[transform:none]" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={project.linkLabel}>
